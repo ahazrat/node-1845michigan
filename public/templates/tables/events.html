@@ -1,0 +1,18 @@
+<table class='table table-bordered table-hover table-striped'>
+  <tr>
+    <th>Index</th>
+    <th>Event</th>
+    <th>
+      Date
+      <select class='pull-right selectpicker' ng-model='searchtext'>
+        <option value=''>All</option>
+        <option ng-repeat='project in manageList.projects | unique: "status" | orderBy: "status"' value='{{ project.status }}'>{{ project.status }}</option>
+      </select>
+    </th>
+  </tr>
+  <tr ng-repeat='project in manageList.projects | filter: searchtext'>
+    <td>{{ $index + 1 }}</td>
+    <td>{{ project.title }}</td>
+    <td>{{ project.status }}</td>
+  </tr>
+</table>

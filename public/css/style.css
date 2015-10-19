@@ -1,0 +1,52 @@
+.curtain {
+  z-index: -1;
+  background-color: #9BAEBA;
+  height: 300px;
+  width: 100%;
+  position: absolute; }
+
+.account-wall img {
+  width: 600px;
+  margin-left: -100px; }
+
+.table {
+  background-color: #E7E7E7; }
+
+.profile {
+  padding: 30px;
+  background-color: #EEEEEE; }
+  .profile span {
+    display: inline-block; }
+
+.over-thirty {
+  background: red;
+  color: white;
+}
+
+.under-thirty {
+  background: blue;
+  color: white;
+}
+
+.hidden {
+  display: none;
+}
+
+form.ng-enter, tr.ng-enter {
+  transition: 0.1s ease-in all;
+  opacity: 0;
+  transform: translateX(-10%);
+}
+form.ng-enter.ng-enter-active, tr.ng-enter.ng-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+form.ng-leave, tr.ng-leave {
+  transition: 0.1s ease-out all;
+  opacity: 1;
+  transform: translateX(0);
+}
+form.ng-leave.ng-leave-active, tr.ng-leave.ng-leave-active {
+  opacity: 0;
+  transform: translateX(-10%);
+}
