@@ -24,7 +24,7 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
     .state('about', {
       url: '/about',
       views: {
-        '': { templateUrl: 'templates/pages/about.html' },
+        '': { templateUrl: 'templates/about/index.html' },
         'columnOne@about': { template: 'Look I am a column!' },
         'columnTwo@about': {
           templateUrl: 'templates/tables/projects.html',
@@ -48,15 +48,15 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
     // authentication
     .state('login', {
       url: '/login',
-      templateUrl: 'templates/pages/login.html'
+      templateUrl: 'templates/authentication/login.html'
     })
     .state('logout', {
       url: '/logout',
-      templateUrl: 'templates/logout.html'
+      templateUrl: 'templates/authentication/logout.html'
     })
     .state('signup', {
       url: '/signup',
-      templateUrl: 'templates/pages/signup.html'
+      templateUrl: 'templates/authentication/signup.html'
     });
   
 });
