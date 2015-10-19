@@ -18,3 +18,14 @@
     <td>{{ project.complete }}</td>
   </tr>
 </table>
+
+<div class='row'>
+    <div class='col-xs-4'>
+        
+        <a class='btn btn-primary' ng-click='manageList.toggleNewProjectForm()'>New Project</a>
+        <br>
+        <br>
+        <ng-include src='"templates/forms/newproject.html"'></ng-include>
+        
+    </div>
+</div>

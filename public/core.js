@@ -84,13 +84,26 @@ myApp.directive('fsNavbar', function () {
 myApp.controller('mainCtrl', function ($http) {
   var vm = this;
   
-  $http.get('/api/projects')
-    .success(function (data) {
-      vm.projects = data;
-    })
-    .error(function (data) {
-      console.log('Error: ' + data);
-    });
+  vm.refreshProjects = function () {
+    $http.get('/api/projects')
+      .success(function (data) {
+        vm.projects = data;
+      })
+      .error(function (data) {
+        console.log('Error: ' + data);
+      });
+  };
+  vm.showNewProjectForm = false;
+  vm.toggleNewProjectForm = function () {
+    vm.showNewProjectForm = vm.showNewProjectForm === true ? false : true;
+  };
+  vm.addProject = function () {
+    vm.showNewProjectForm = false;
+    // $http.post('/api/projects');
+    vm.refreshProjects();
+  };
+  
+  vm.refreshProjects();
   
   vm.formData = {};
   

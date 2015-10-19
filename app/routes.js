@@ -11,6 +11,10 @@ module.exports = function (app) {
       res.json(projects);
     });
   });
+  // post new project
+  app.post('/api/projects');
+  
+  // demo stuff to delete
   // get all todos
   app.get('/api/todos', function (req, res) {
     Todo.find(function (err, todos) {
