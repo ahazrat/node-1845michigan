@@ -1,8 +1,16 @@
 var Todo = require('./models/todo');
+var Project = require('./models/project');
 
 module.exports = function (app) {
   
   // api
+  // get all projects
+  app.get('/api/projects', function (req, res) {
+    Project.find(function (err, projects) {
+      if (err) { res.send(err); }
+      res.json(projects);
+    });
+  });
   // get all todos
   app.get('/api/todos', function (req, res) {
     Todo.find(function (err, todos) {

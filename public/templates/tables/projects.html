@@ -9,10 +9,12 @@
         <option ng-repeat='project in manageList.projects | unique: "status" | orderBy: "status"' value='{{ project.status }}'>{{ project.status }}</option>
       </select>
     </th>
+    <th>Completed</th>
   </tr>
-  <tr ng-repeat='project in manageList.projects | filter: searchtext'>
+  <tr ng-repeat='project in ctrl.projects | filter: searchtext'>
     <td>{{ $index + 1 }}</td>
     <td>{{ project.title }}</td>
     <td>{{ project.status }}</td>
+    <td>{{ project.complete }}</td>
   </tr>
 </table>

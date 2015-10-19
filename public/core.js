@@ -9,7 +9,7 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
     // home
     .state('home', {
       url: '/home',
-      templateUrl: 'templates/pages/home.html'
+      templateUrl: 'templates/home/index.html'
     })
     .state('home.projects', {
       url: '/projects',
@@ -33,11 +33,27 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
       }
     })
     
+    // admin
+    .state('admin', {
+      url: '/admin',
+      templateUrl: 'templates/admin/index.html'
+    })
+    
+    // profile
+    .state('profile', {
+      url: '/profile',
+      templateUrl: 'templates/profile/index.html'
+    })
+    
+    // authentication
     .state('login', {
       url: '/login',
       templateUrl: 'templates/pages/login.html'
     })
-    
+    .state('logout', {
+      url: '/logout',
+      templateUrl: 'templates/logout.html'
+    })
     .state('signup', {
       url: '/signup',
       templateUrl: 'templates/pages/signup.html'
@@ -67,6 +83,14 @@ myApp.directive('fsNavbar', function () {
 
 myApp.controller('mainCtrl', function ($http) {
   var vm = this;
+  
+  $http.get('/api/projects')
+    .success(function (data) {
+      vm.projects = data;
+    })
+    .error(function (data) {
+      console.log('Error: ' + data);
+    });
   
   vm.formData = {};
   

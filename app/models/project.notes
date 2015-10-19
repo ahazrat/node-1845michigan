@@ -1,0 +1,3 @@
+db.projects.find()
+
+db.projects.update({_id: ObjectId("562450c941bd318483630598")},{$set: {complete: true}})
