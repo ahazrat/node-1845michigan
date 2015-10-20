@@ -21,11 +21,10 @@
 
 <div class='row'>
     <div class='col-xs-4'>
-        
-        <a class='btn btn-primary' ng-click='manageList.toggleNewProjectForm()'>New Project</a>
+        <a ng-if='!ctrl.showNewProjectForm' class='btn btn-primary' ng-click='ctrl.showNewProjectForm=true'>New Project</a>
+        <a ng-if='ctrl.showNewProjectForm' class='btn btn-danger' ng-click='ctrl.showNewProjectForm=false'>Hide Form</a>
         <br>
         <br>
-        <ng-include src='"templates/forms/newproject.html"'></ng-include>
-        
+        <ng-include ng-if='ctrl.showNewProjectForm' src='"templates/forms/newproject.html"'></ng-include>
     </div>
 </div>

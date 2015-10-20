@@ -15,6 +15,10 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
       url: '/projects',
       templateUrl: 'templates/tables/projects.html'
     })
+    .state('home.projects.new', {
+      url: '/new',
+      templateUrl: 'templates/forms/newproject.html'
+    })
     .state('home.events', {
       url: '/events',
       templateUrl: 'templates/tables/events.html'
@@ -84,6 +88,7 @@ myApp.directive('fsNavbar', function () {
 myApp.controller('mainCtrl', function ($http) {
   var vm = this;
   
+  // fetch projects
   vm.refreshProjects = function () {
     $http.get('/api/projects')
       .success(function (data) {
@@ -93,10 +98,9 @@ myApp.controller('mainCtrl', function ($http) {
         console.log('Error: ' + data);
       });
   };
+  
+  // new project form
   vm.showNewProjectForm = false;
-  vm.toggleNewProjectForm = function () {
-    vm.showNewProjectForm = vm.showNewProjectForm === true ? false : true;
-  };
   vm.addProject = function () {
     vm.showNewProjectForm = false;
     // $http.post('/api/projects');
