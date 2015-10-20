@@ -1,11 +1,11 @@
 <form>
   <div class='form-group'>
     <label>Project Title</label><br>
-    <input ng-model='ctrl.newProject.title' placeholder='Project title'>
+    <input ng-model='ctrl.newProject.title' placeholder='Project title' required>
   </div>
   <div>
     <label>Project Status</label><br>
-    <input ng-model='ctrl.newProject.status' placeholder='Project status'>
+    <input ng-model='ctrl.newProject.status' placeholder='Project status' required>
   </div>
   <br>
   <button class='btn btn-default' ng-click='ctrl.addProject()'>Add Project</button>

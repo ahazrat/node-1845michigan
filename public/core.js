@@ -85,6 +85,27 @@ myApp.directive('fsNavbar', function () {
   };
 });
 
+if (false) {
+myApp.directive('fsSignup', function () {
+  return {
+    restrict: 'E',
+    templateUrl: 'templates/authentication/signup',
+    scope: {
+      user: '='
+    },
+    controllerAs: 'suCtrl',
+    bindToController: true,
+    controller: function () {
+      var vm = this;
+      vm.foobar = "Hello";
+      vm.signup = function () {
+        alert();
+      };
+    }
+  };
+});
+}
+
 myApp.controller('mainCtrl', function ($http) {
   var vm = this;
   
@@ -166,5 +187,23 @@ myApp.controller('aboutCtrl', function () {
     }
   ];
   
+  
+});
+
+myApp.controller('signupCtrl', function ($http) {
+  var vm = this;
+  
+  vm.signup = function () {
+    
+    $http.post('/api/users', vm.newUser)
+      .success(function (data) {
+        vm.newUser = {};
+        console.log(data);
+      })
+      .error(function (data) {
+        console.log('Error: ' + data);
+      });
+    
+  };
   
 });

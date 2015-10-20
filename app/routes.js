@@ -1,5 +1,6 @@
 var Todo = require('./models/todo');
 var Project = require('./models/project');
+var User = require('./models/user');
 
 module.exports = function (app) {
   
@@ -13,6 +14,19 @@ module.exports = function (app) {
   });
   // post new project
   app.post('/api/projects');
+  
+  // users
+  app.post('/api/users', function (req, res) {
+    User.create({
+      email: req.body.email,
+      password_hash: req.body.password,
+      firstname: req.body.firstname,
+      lastname: req.body.lastname
+    }, function (err, user) {
+      if (err) { res.send(err); }
+      res.json(user);
+    });
+  });
   
   // demo stuff to delete
   // get all todos
