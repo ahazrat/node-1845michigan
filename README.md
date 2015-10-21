@@ -14,28 +14,21 @@
 
 Hi there! Welcome to the 1845 S Michigan dashboard!
 
-To get you started, go to [https://b1845michigan-frastr.c9.io/](https://b1845michigan-frastr.c9.io/) and interface with the application.
+To get you started, check out the [development server](https://b1845michigan-frastr.c9.io/).
+
+## Features
+- Tenant Profiles
+- Project Suggestion and Voting
+
+## In Development
+- Event Posting
 
 If you have questions, please contact:
-#### Mustafa Hazrat
+- *Mustafa Hazrat* `Board of Directors`
 630.835.6053
 
-#### Asif Hazrat
+- *Asif Hazrat* `Web Developer`
 630.936.8882
-
-Cheers!
-
-The 1845 Michigan dashboard team
-
-# Node Todo App
-
-A Node app built with MongoDB and Angular. For demonstration purposes and a tutorial.
-
-Node provides the RESTful API. Angular provides the frontend and accesses the API. MongoDB stores like a hoarder.
-
-## Requirements
-
-- [Node and npm](http://nodejs.org)
 
 ## Installation
 
