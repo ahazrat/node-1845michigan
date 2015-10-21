@@ -128,42 +128,9 @@ myApp.controller('mainCtrl', function ($http) {
     vm.refreshProjects();
   };
   
+  // initialize
   vm.refreshProjects();
-  
   vm.formData = {};
-  
-  // when landing on the page, get all the todos and show them
-  $http.get('/api/todos')
-    .success(function (data) {
-      vm.todos = data;
-    })
-    .error(function (data) {
-      console.log('Error: ' + data);
-    });
-    
-  // when submitting the add form, send the text to node API
-  vm.createTodo = function () {
-    $http.post('/api/todos', vm.formData)
-      .success(function (data) {
-        vm.formData = {};
-        vm.todos = data;
-        console.log(data);
-      })
-      .error(function (data) {
-        console.log('Error: ' + data);
-      });
-  };
-  
-  // delete a todo after checking it
-  vm.deleteTodo = function (id) {
-    $http.delete('/api/todos' + id)
-      .success(function (data) {
-        vm.todos = data;
-      })
-      .error(function (data) {
-        console.log('Error: ' + data);
-      });
-  };  
   
 });
 
@@ -190,20 +157,63 @@ myApp.controller('aboutCtrl', function () {
   
 });
 
-myApp.controller('signupCtrl', function ($http) {
+myApp.controller('signupCtrl', function ($scope, $http, $location) {
   var vm = this;
   
   vm.signup = function () {
+    $scope = $scope || angular.element(document).scope();
     
     $http.post('/api/users', vm.newUser)
       .success(function (data) {
         vm.newUser = {};
         console.log(data);
+        $location.path('/home');
+        $scope.$apply();
       })
       .error(function (data) {
         console.log('Error: ' + data);
       });
     
+  };
+  
+});
+
+myApp.controller('todoCtrl', function ($http) {
+  var vm = this;
+  
+  // when landing on the page, get all the todos and show them
+  vm.getTodos = function () {
+    $http.get('/api/todos')
+      .success(function (data) {
+        vm.todos = data;
+      })
+      .error(function (data) {
+        console.log('Error: ' + data);
+      });
+  };
+    
+  // when submitting the add form, send the text to node API
+  vm.createTodo = function () {
+    $http.post('/api/todos', vm.formData)
+      .success(function (data) {
+        vm.formData = {};
+        vm.todos = data;
+        console.log(data);
+      })
+      .error(function (data) {
+        console.log('Error: ' + data);
+      });
+  };
+  
+  // delete a todo after checking it
+  vm.deleteTodo = function (id) {
+    $http.delete('/api/todos' + id)
+      .success(function (data) {
+        vm.todos = data;
+      })
+      .error(function (data) {
+        console.log('Error: ' + data);
+      });
   };
   
 });

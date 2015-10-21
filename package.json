@@ -6,10 +6,15 @@
   "author": "Asif Hazrat",
   "private": true,
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "~1.5.2",
     "express": "4.13.3",
+    "express-session": "^1.11.3",
+    "method-override": "~2.1.2",
     "mongoose": "4.1.9",
     "morgan": "~1.2.2",
-    "body-parser": "~1.5.2",
-    "method-override": "~2.1.2"
+    "nodemon": "~1.7.3",
+    "passport": "^0.3.0",
+    "passport-local": "^1.0.0"
   }
 }

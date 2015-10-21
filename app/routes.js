@@ -2,7 +2,7 @@ var Todo = require('./models/todo');
 var Project = require('./models/project');
 var User = require('./models/user');
 
-module.exports = function (app) {
+module.exports = function (app, passport) {
   
   // api
   // get all projects
