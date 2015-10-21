@@ -5,7 +5,7 @@
     '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
      `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
     ----------------------------------------------------------------- 
-
+<pre>
   __  ___  _  _   _____    _____   __  __ _      _     _                   
  /_ |/ _ \| || | | ____|  / ____| |  \/  (_)    | |   (_)                  
   | | (_) | || |_| |__   | (___   | \  / |_  ___| |__  _  __ _  __ _ _ __  
@@ -15,7 +15,8 @@
                                                           __/ |            
                                                          |___/             
   -------------------------------------------------------------------------
-  
+</pre>
+
 Hi there! Welcome to the 1845 S Michigan dashboard!
 
 To get you started, go to [https://b1845michigan-frastr.c9.io/](https://b1845michigan-frastr.c9.io/) and interface with the application.
@@ -28,6 +29,7 @@ If you have questions, please contact:
 630.936.8882
 
 Cheers!
+
 The 1845 Michigan dashboard team
 
 # Node Todo App
