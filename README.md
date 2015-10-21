@@ -6,16 +6,29 @@
      `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
     ----------------------------------------------------------------- 
 
+  __  ___  _  _   _____    _____   __  __ _      _     _                   
+ /_ |/ _ \| || | | ____|  / ____| |  \/  (_)    | |   (_)                  
+  | | (_) | || |_| |__   | (___   | \  / |_  ___| |__  _  __ _  __ _ _ __  
+  | |> _ <|__   _|___ \   \___ \  | |\/| | |/ __| '_ \| |/ _` |/ _` | '_ \ 
+  | | (_) |  | |  ___) |  ____) | | |  | | | (__| | | | | (_| | (_| | | | |
+  |_|\___/   |_| |____/  |_____/  |_|  |_|_|\___|_| |_|_|\__, |\__,_|_| |_|
+                                                          __/ |            
+                                                         |___/             
+  -------------------------------------------------------------------------
+  
+Hi there! Welcome to the 1845 S Michigan dashboard!
 
-Hi there! Welcome to Cloud9 IDE!
+To get you started, go to [https://b1845michigan-frastr.c9.io/](https://b1845michigan-frastr.c9.io/) and interface with the application.
 
-To get you started, create some files, play with the terminal,
-or visit http://docs.c9.io for our documentation.
-If you want, you can also go watch some training videos at
-http://www.youtube.com/user/c9ide.
+If you have questions, please contact:
+### Mustafa Hazrat
+630.835.6053
 
-Happy coding!
-The Cloud9 IDE team
+### Asif Hazrat
+630.936.8882
+
+Cheers!
+The 1845 Michigan dashboard team
 
 # Node Todo App
 
