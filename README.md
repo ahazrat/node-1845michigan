@@ -23,14 +23,13 @@ To get you started, check out the [development server](https://b1845michigan-fra
 ## In Development
 - Event Posting
 
-If you have questions, please contact:
-- *Mustafa Hazrat* `Board of Directors`
-630.835.6053
+## Contact
 
-- *Asif Hazrat* `Web Developer`
+- **Mustafa Hazrat** [`Board of Directors`](630.835.6053)
+
+- **Asif Hazrat** `Web Developer`
+ 
 630.936.8882
-
-## Installation
 
 1. Clone the repository: `git clone git@github.com:scotch-io/node-todo`
 2. Install the application: `npm install`
