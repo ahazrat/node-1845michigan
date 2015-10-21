@@ -10,16 +10,17 @@
 </pre>
   -------------------------------------------------------------------------
 
+# 1845 S Michigan
 
 Hi there! Welcome to the 1845 S Michigan dashboard!
 
 To get you started, go to [https://b1845michigan-frastr.c9.io/](https://b1845michigan-frastr.c9.io/) and interface with the application.
 
 If you have questions, please contact:
-### Mustafa Hazrat
+#### Mustafa Hazrat
 630.835.6053
 
-### Asif Hazrat
+#### Asif Hazrat
 630.936.8882
 
 Cheers!
