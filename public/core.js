@@ -1,8 +1,29 @@
 var myApp = angular.module('myApp', ['ui.router']);
 
-myApp.config(function ($stateProvider, $urlRouterProvider) {
+var auth = function (req, res, next) {
+  if (!req.isAuthenticated())
+    res.send(401);
+  else
+    next();
+};
+
+myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
 
   $urlRouterProvider.otherwise('/home');
+  
+  $httpProvider.interceptors.push(function ($q, $location) {
+    return {
+      response: function (response) {
+        // do something on success
+        return response;
+      },
+      responseError: function (response) {
+        if (response.status === 401)
+          $location.url('/login');
+        return $q.reject(response);
+      }
+    };
+  });
   
   $stateProvider
   
@@ -161,8 +182,6 @@ myApp.controller('signupCtrl', function ($scope, $http, $location) {
   var vm = this;
   
   vm.signup = function () {
-    $scope = $scope || angular.element(document).scope();
-    
     $http.post('/api/users', vm.newUser)
       .success(function (data) {
         vm.newUser = {};
@@ -173,7 +192,6 @@ myApp.controller('signupCtrl', function ($scope, $http, $location) {
       .error(function (data) {
         console.log('Error: ' + data);
       });
-    
   };
   
 });

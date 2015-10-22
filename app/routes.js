@@ -2,11 +2,18 @@ var Todo = require('./models/todo');
 var Project = require('./models/project');
 var User = require('./models/user');
 
+var auth = function (req, res, next) {
+  if (!req.isAuthenticated())
+    res.send(401);
+  else
+    next();
+};
+
 module.exports = function (app, passport) {
   
   // api
   // get all projects
-  app.get('/api/projects', function (req, res) {
+  app.get('/api/projects', auth, function (req, res) {
     Project.find(function (err, projects) {
       if (err) { res.send(err); }
       res.json(projects);
@@ -60,6 +67,18 @@ module.exports = function (app, passport) {
   // get index
   app.get('*', function (req, res) {
     res.sendfile('./public/index.html');
+  });
+  
+  // authentication
+  app.post('/login', passport.authenticate('local'), function (req, res) {
+    res.send(req.user);
+  });
+  app.post('/logout', function (req, res) {
+    req.logout();
+    res.send(200);
+  });
+  app.get('/loggedin', function (req, res) {
+    res.send(req.isAuthenticated() ? req.user : '0');
   });
   
 };
