@@ -2,13 +2,16 @@
 var express = require('express');
 var app = express();
 var path = express('path');
+var favicon = require('serve-favicon');
 var mongoose = require('mongoose');
 var port = process.env.PORT || 8080;
 var db = require('./config/database');
 var morgan = require('morgan');  // log requests to the console (express4)
+var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser'); // pull information from HTML POST (express4)
 var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
 var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 var passportConfig = require('./passport/init');
 var expressSession = require('express-session');
 
@@ -30,6 +33,9 @@ passportConfig(passport);
 
 // routes
 require('./app/routes')(app, passport);
+// var routes = require('./app/routes/index');
+// var contacts = require('./app/routes/contacts');
+// var auth = require('./app/routes/auth');
 
 // listen
 app.listen(port);
