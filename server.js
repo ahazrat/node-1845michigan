@@ -17,7 +17,13 @@ var expressSession = require('express-session');
 // config database
 var db = require('./config/database');
 var MongoURI = process.env.MONGOURI || db.url;
-mongoose.connect(MongoURI);
+mongoose.connect(MongoURI, function (err, res) {
+  if (err) {
+    console.log('Error connecting to: ' + MongoURI + '. ' + err);
+  } else {
+    console.log('MongoDB connected successfully to ' + MongoURI);
+  }
+});
 
 // config other
 app.use(express.static(__dirname + '/public'));
