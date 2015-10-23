@@ -13,7 +13,8 @@ module.exports = function (app, passport) {
   
   // api
   // get all projects
-  app.get('/api/projects', auth, function (req, res) {
+  // app.get('/api/projects', auth, function (req, res) {
+  app.get('/api/projects', function (req, res) {
     Project.find(function (err, projects) {
       if (err) { res.send(err); }
       res.json(projects);

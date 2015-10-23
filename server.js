@@ -5,7 +5,6 @@ var path = express('path');
 var favicon = require('serve-favicon');
 var mongoose = require('mongoose');
 var port = process.env.PORT || 8080;
-var db = require('./config/database');
 var morgan = require('morgan');  // log requests to the console (express4)
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser'); // pull information from HTML POST (express4)
@@ -15,9 +14,12 @@ var LocalStrategy = require('passport-local').Strategy;
 var passportConfig = require('./passport/init');
 var expressSession = require('express-session');
 
-// config
-mongoose.connect(db.url);
+// config database
+var db = require('./config/database');
+var MongoURI = process.env.MONGOURI || db.url;
+mongoose.connect(MongoURI);
 
+// config other
 app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));  // log every request to the console
 app.use(bodyParser.urlencoded({'extended':'true'})); // parse application/x-www-form-urlencoded
