@@ -43,6 +43,10 @@ app.use(expressSession({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+var Account = require('./app/models/account');
+passport.use(Account.createStrategy());
+passport.serializeUser(Account.serializeUser());
+passport.deserializeUser(Account.deserializeUser());
 passportConfig(passport);
 
 // routes
@@ -50,6 +54,9 @@ require('./app/routes')(app, passport);
 // var routes = require('./app/routes/index');
 // var contacts = require('./app/routes/contacts');
 // var auth = require('./app/routes/auth');
+// app.use('/', routes);
+// app.use('/contacts', contacts);
+// app.use('/auth/', auth);
 
 // listen
 app.listen(port);
