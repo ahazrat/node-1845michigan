@@ -32,10 +32,15 @@ app.use(bodyParser.urlencoded({'extended':'true'})); // parse application/x-www-
 app.use(bodyParser.json());  // parse application/json
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));  // parse application/vnd.api+json as json
 app.use(methodOverride());
+app.use(cookieParser());
 app.use(favicon(__dirname + '/public/favicon.ico'));
 
 // authentication
-app.use(expressSession({secret: 'Grumpy Cat'}));
+app.use(expressSession({
+  secret: 'Grumpy Cat',
+  resave: true,
+  saveUninitialized: false
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 passportConfig(passport);

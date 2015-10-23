@@ -1,4 +1,3 @@
-var Todo = require('./models/todo');
 var Project = require('./models/project');
 var User = require('./models/user');
 
