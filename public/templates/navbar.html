@@ -13,11 +13,11 @@
     
     <div id='navbar-collapse' class='collapse navbar-collapse'>
       
-      <ul ng-if='na.user' class='nav navbar-nav'>
+      <ul ng-if='navCtrl.user' class='nav navbar-nav'>
         <li class='active'>
           <a ui-sref="about">About</a>
         </li>
-        <li ng-if='na.user.role==="Admin"'>
+        <li ng-if='navCtrl.user.role==="Admin"'>
           <a ui-sref='admin'>Admin</a>
         </li>
         <li class='dropdown'>
@@ -33,18 +33,18 @@
         </li>
       </ul>
       
-      <form ng-if='na.user' class='navbar-form navbar-left' role='search'>
+      <form ng-if='navCtrl.user' class='navbar-form navbar-left' role='search'>
         <input type='text' class='form-control' placeholder='Search projects'>
       </form>
       
       <ul class='nav navbar-nav navbar-right'>
-        <li ng-if='na.user'>
-          <a ui-sref='profile'>{{ na.user.firstname }}</a>
+        <li ng-if='navCtrl.user'>
+          <a ui-sref='profile'>{{ navCtrl.user.firstname }}</a>
         </li>
-        <li ng-if='na.user'>
+        <li ng-if='navCtrl.user'>
           <a ui-sref='logout'>Logout</a>
         </li>
-        <li ng-if='!na.user'>
+        <li ng-if='!navCtrl.user'>
           <a ui-sref='signup'>Signup</a>
         </li>
       </ul>

@@ -61,7 +61,10 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
     // admin
     .state('admin', {
       url: '/admin',
-      templateUrl: 'templates/admin/index.html'
+      templateUrl: 'templates/admin/index.html',
+      controller: function ($scope) {
+        $scope.apothic = "Get the fuck out";
+      }
     })
     
     // profile
@@ -93,11 +96,11 @@ myApp.directive('fsNavbar', function () {
     scope: {
       user: '='
     },
-    controllerAs: 'na',
+    controllerAs: 'navCtrl',
     bindToController: true,
     controller: function () {
-      var nb = this;
-      nb.user = {
+      var vm = this;
+      vm.user = {
         firstname: 'Asif',
         lastname: 'Hazrat',
         role: 'Admin'
