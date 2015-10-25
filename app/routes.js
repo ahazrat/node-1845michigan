@@ -61,8 +61,6 @@ module.exports = function (app, passport) {
     res.send(req.isAuthenticated() ? req.user : '0');
   });
   app.post('/signup', passport.authenticate('signup'), function (req, res) {
-    console.log('Reached post /signup callback');
-    console.log(req.user);
     res.json(req.user);
   });
   app.post('/login', passport.authenticate('login', {

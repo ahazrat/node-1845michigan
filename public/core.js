@@ -112,7 +112,7 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
         
         setTimeout(function () {
           $location.path('/login');
-          $scope.$apply();
+          // $scope.$apply();
         }, 2000);
         
       }
@@ -223,10 +223,8 @@ myApp.controller('signupCtrl', function ($scope, $http, $location) {
     $http.post('/signup', vm.newUser)
       .then(
         function (data) {
-          vm.newUser = {};
           console.log('Success: ' + data);
           $location.path('/admin');
-          $scope.$apply();
         },
         function (data) {
           console.log('Error: ' + data);
