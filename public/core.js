@@ -63,7 +63,8 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
       url: '/admin',
       templateUrl: 'templates/admin/index.html',
       controller: function ($scope) {
-        $scope.apothic = "Get the fuck out";
+        $scope.apothic = "d3 functionality lives on the page";
+        $scope.dataArray = [10, 20, 30, 40, 50, 60];
       }
     })
     
@@ -76,11 +77,45 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
     // authentication
     .state('login', {
       url: '/login',
-      templateUrl: 'templates/authentication/login.html'
+      templateUrl: 'templates/authentication/login.html',
+      controller: function ($scope, $http) {
+        
+        $scope.login = function () {
+          $http.post('/login', $scope.tempUser)
+            .success(function (data) {
+              console.log('Login successfull: ' + data);
+            })
+            .error(function (data) {
+              console.log('Login error: ' + data);
+            });
+        };
+        
+        $scope.tempUser = {
+          username: 'asif@gmail.com',
+          password: 'hello'
+        };
+        
+      }
     })
     .state('logout', {
       url: '/logout',
-      templateUrl: 'templates/authentication/logout.html'
+      templateUrl: 'templates/authentication/logout.html',
+      controller: function ($scope, $http, $location) {
+        
+        $http.get('/logout')
+          .success(function (data) {
+            console.log('Logout successful: ' + data);
+          })
+          .error(function (data) {
+            console.log('Logout error: ' + data);
+          });
+        
+        setTimeout(function () {
+          $location.path('/login');
+          $scope.$apply();
+        }, 2000);
+        
+      }
     })
     .state('signup', {
       url: '/signup',
@@ -185,18 +220,28 @@ myApp.controller('signupCtrl', function ($scope, $http, $location) {
   var vm = this;
   
   vm.signup = function () {
-    $http.post('/api/users', vm.newUser)
-      .success(function (data) {
-        vm.newUser = {};
-        console.log(data);
-        $location.path('/home');
-        $scope.$apply();
-      })
-      .error(function (data) {
-        console.log('Error: ' + data);
-      });
+    $http.post('/signup', vm.newUser)
+      .then(
+        function (data) {
+          vm.newUser = {};
+          console.log('Success: ' + data);
+          $location.path('/admin');
+          $scope.$apply();
+        },
+        function (data) {
+          console.log('Error: ' + data);
+        }
+      );
   };
   
+});
+
+myApp.controller('loginCtrl', function ($http, $location) {
+  var vm = this;
+  
+  vm.login = function () {
+    $http.post('/');
+  };
 });
 
 myApp.controller('todoCtrl', function ($http) {

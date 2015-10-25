@@ -17,11 +17,12 @@ module.exports = function (passport) {
                     console.log('User already exists with email: ' + username);
                 } else {
                     var newUser = new UserDetails();
-                    newUser.email = username;
+                    newUser.role = 'user';
+                    newUser.pic = 'http://i.imgur.com/zhrTqT5.jpg';
+                    newUser.lastname = req.body.lastname;
+                    newUser.firstname = req.body.firstname;
                     newUser.password = createHash(password);
-                    newUser.firstname = req.param('firstname');
-                    newUser.lastname = req.param('lastname');
-                    newUser.role = 'user'
+                    newUser.email = username;
                     newUser.save(function (err) {
                         if (err) {
                             console.log('Error in saving user: ' + user);

@@ -5,7 +5,7 @@ var auth = function (req, res, next) {
   if (!req.isAuthenticated())
     res.send(401);
   else
-    next();
+    return next();
 };
 
 module.exports = function (app, passport) {
@@ -21,19 +21,6 @@ module.exports = function (app, passport) {
   });
   // post new project
   app.post('/api/projects');
-  
-  // users
-  app.post('/api/users', function (req, res) {
-    User.create({
-      email: req.body.email,
-      password_hash: req.body.password,
-      firstname: req.body.firstname,
-      lastname: req.body.lastname
-    }, function (err, user) {
-      if (err) { res.send(err); }
-      res.json(user);
-    });
-  });
   
   // demo stuff to delete
   // get all todos
@@ -70,15 +57,22 @@ module.exports = function (app, passport) {
   });
   
   // authentication
-  app.post('/login', passport.authenticate('local'), function (req, res) {
-    res.send(req.user);
-  });
-  app.post('/logout', function (req, res) {
-    req.logout();
-    res.send(200);
-  });
   app.get('/loggedin', function (req, res) {
     res.send(req.isAuthenticated() ? req.user : '0');
+  });
+  app.post('/signup', passport.authenticate('signup'), function (req, res) {
+    console.log('Reached post /signup callback');
+    console.log(req.user);
+    res.json(req.user);
+  });
+  app.post('/login', passport.authenticate('login', {
+    // successRedirect: '/admin',
+    // failureRedirect: '/login',
+    // failureFlash: true
+  }));
+  app.post('/logout', function (req, res) {
+    req.logout();
+    res.sendStatus(200);
   });
   
 };
