@@ -63,11 +63,12 @@ module.exports = function (app, passport) {
   app.post('/signup', passport.authenticate('signup'), function (req, res) {
     res.json(req.user);
   });
-  app.post('/login', passport.authenticate('login', {
+  app.post('/login', passport.authenticate('login'), function (req, res) {
+    res.json(req.user);
     // successRedirect: '/admin',
     // failureRedirect: '/login',
     // failureFlash: true
-  }));
+  });
   app.post('/logout', function (req, res) {
     req.logout();
     res.sendStatus(200);

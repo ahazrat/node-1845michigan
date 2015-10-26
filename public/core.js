@@ -78,23 +78,19 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
     .state('login', {
       url: '/login',
       templateUrl: 'templates/authentication/login.html',
-      controller: function ($scope, $http) {
-        
+      controller: function ($scope, $http, $location) {
         $scope.login = function () {
           $http.post('/login', $scope.tempUser)
             .success(function (data) {
-              console.log('Login successfull: ' + data);
+              console.log('Login successfull');
+              console.log(data);
+              $scope.user = data;
             })
             .error(function (data) {
-              console.log('Login error: ' + data);
+              console.log('Login error');
             });
+          $location.path('/admin');
         };
-        
-        $scope.tempUser = {
-          username: 'asif@gmail.com',
-          password: 'hello'
-        };
-        
       }
     })
     .state('logout', {
@@ -104,15 +100,15 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
         
         $http.get('/logout')
           .success(function (data) {
-            console.log('Logout successful: ' + data);
+            console.log('Logout successful');
           })
           .error(function (data) {
-            console.log('Logout error: ' + data);
+            console.log('Logout error');
           });
         
         setTimeout(function () {
           $location.path('/login');
-          // $scope.$apply();
+          $scope.$apply();
         }, 2000);
         
       }
