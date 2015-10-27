@@ -82,7 +82,7 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
         $scope.login = function () {
           $http.post('/login', $scope.tempUser)
             .success(function (data) {
-              console.log('Login successfull');
+              console.log('Login successfull!');
               console.log(data);
               $scope.user = data;
             })
