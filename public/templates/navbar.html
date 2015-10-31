@@ -38,13 +38,18 @@
       </form>
       
       <ul class='nav navbar-nav navbar-right'>
-        <li ng-if='navCtrl.user'>
+        
+        <li>
+          <a>{{ navCtrl.hellotest }}</a>
+        </li>
+        
+        <li ng-if='navCtrl.loggedIn'>
           <a ui-sref='profile'>{{ navCtrl.user.firstname }}</a>
         </li>
-        <li ng-if='navCtrl.user'>
+        <li ng-if='navCtrl.loggedIn'>
           <a ui-sref='logout'>Logout</a>
         </li>
-        <li ng-if='!navCtrl.user'>
+        <li ng-if='!navCtrl.loggedIn'>
           <a ui-sref='signup'>Signup</a>
         </li>
       </ul>

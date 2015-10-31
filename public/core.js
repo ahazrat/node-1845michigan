@@ -7,6 +7,36 @@ var auth = function (req, res, next) {
     next();
 };
 
+myApp.service('fsUser', function($http, $q) {
+  var _user = {};
+  
+  this.loggedIn = function () {
+    if (_user) { return true; }
+    return false;
+  };
+  
+  this.setUser = function (user) {
+    _user = user;
+  };
+  
+  this.getUser = function () {
+    return _user;
+  };
+  
+  this.setFirstName = function (firstname) {
+    _user.firstname = firstname;
+  };
+
+  this.getFirstName = function () {
+    return _user.firstname;
+  };
+
+  this.fullName = function () {
+    return _user.firtname + ' ' + _user.lastname;
+  };
+  
+});
+
 myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
 
   $urlRouterProvider.otherwise('/home');
@@ -27,7 +57,6 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
   
   $stateProvider
   
-    // home
     .state('home', {
       url: '/home',
       templateUrl: 'templates/home/index.html'
@@ -45,7 +74,6 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
       templateUrl: 'templates/tables/events.html'
     })
     
-    // about
     .state('about', {
       url: '/about',
       views: {
@@ -58,7 +86,6 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
       }
     })
     
-    // admin
     .state('admin', {
       url: '/admin',
       templateUrl: 'templates/admin/index.html',
@@ -68,29 +95,35 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
       }
     })
     
-    // profile
     .state('profile', {
       url: '/profile',
-      templateUrl: 'templates/profile/index.html'
+      templateUrl: 'templates/profile/index.html',
+      controller: function ($scope, fsUser) {
+        $scope.supsup = 'Sup';
+        
+        $scope.ctrlUser = fsUser.getFirstName();
+        
+      }
     })
     
-    // authentication
     .state('login', {
       url: '/login',
       templateUrl: 'templates/authentication/login.html',
-      controller: function ($scope, $http, $location) {
+      controller: function ($scope, $http, $location, fsUser) {
+        
         $scope.login = function () {
           $http.post('/login', $scope.tempUser)
             .success(function (data) {
               console.log('Login successfull!');
-              console.log(data);
-              $scope.user = data;
+              fsUser.setUser(data);
+              console.log(fsUser.getFirstName());
             })
             .error(function (data) {
               console.log('Login error');
             });
-          $location.path('/admin');
+          $location.path('/profile');
         };
+        
       }
     })
     .state('logout', {
@@ -129,28 +162,13 @@ myApp.directive('fsNavbar', function () {
     },
     controllerAs: 'navCtrl',
     bindToController: true,
-    controller: function () {
+    controller: function (fsUser) {
       var vm = this;
-      vm.user = {
-        firstname: 'Asif',
-        lastname: 'Hazrat',
-        role: 'Admin'
-      };
+      
+      vm.hellotest = fsUser.getFirstName();
+      
     }
   };
-});
-
-myApp.service('fsUser', function($http, $q) {
-  var user = {};
-  
-  var fullName = function () {
-    return user.firtname + ' ' + user.lastname;
-  };
-  
-  var setUser = function () {
-    user = {};
-  };
-  
 });
 
 if (false) {

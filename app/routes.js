@@ -52,7 +52,7 @@ module.exports = function (app, passport) {
   
   // application
   // get index
-  app.get('*', function (req, res) {
+  app.get('*', auth, function (req, res) {
     res.sendfile('./public/index.html');
   });
   
