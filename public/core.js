@@ -140,6 +140,19 @@ myApp.directive('fsNavbar', function () {
   };
 });
 
+myApp.service('fsUser', function($http, $q) {
+  var user = {};
+  
+  var fullName = function () {
+    return user.firtname + ' ' + user.lastname;
+  };
+  
+  var setUser = function () {
+    user = {};
+  };
+  
+});
+
 if (false) {
 myApp.directive('fsSignup', function () {
   return {
